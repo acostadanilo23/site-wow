@@ -1,22 +1,23 @@
 #!/bin/bash
 
-# Definindo o diretório onde o WoW será instalado
+# Definindo os diretórios
 WOW_DIR="/home/jogos/wow"
-WOW_ZIP_URL="https://link-para-o-arquivo.zip"  # Substitua por seu link de download
+WOW_ZIP_URL_DROPBOX="https://www.dropbox.com/scl/fi/pn0cj7x9y4fid9gzayp1f/World-of-Warcraft.zip?rlkey=rb67i6hk2xjx0t16vkn7kolii&st=v28hw6vr&dl=1"  # Link direto do Dropbox
 
 # Passo 1: Instalar dependências (Wine e ferramentas de descompactação)
 echo "Instalando dependências..."
-sudo dnf install -y wine unzip wget
+sudo apt update
+sudo apt install -y wine64 wine32 unzip wget
 
 # Passo 2: Criar diretório para o WoW
 echo "Criando diretório de instalação..."
 mkdir -p "$WOW_DIR"
 
-# Passo 3: Baixar o cliente WoW via wget
-echo "Baixando o cliente WoW..."
-wget "$WOW_ZIP_URL" -O /tmp/wow.zip
+# Passo 3: Baixar o cliente WoW do Dropbox usando wget
+echo "Baixando o cliente WoW do Dropbox..."
+wget "$WOW_ZIP_URL_DROPBOX" -O /tmp/wow.zip
 
-# Passo 4: Descompactar o arquivo ZIP
+# Passo : Descompactar o arquivo ZIP do WoW
 echo "Descompactando o cliente WoW..."
 unzip /tmp/wow.zip -d "$WOW_DIR"
 
